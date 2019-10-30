@@ -10,7 +10,7 @@
     <div id="root">
       <div> {{first}} 곱하기 {{second}} 는?</div>
       <form v-on:submit="onSubmitForm">
-        <input type="number" v-model="value"></input>
+        <input type="number" ref="answer" v-model="value"></input>
         <button type="submit">입력</button>
       </form>
       <div id="result">{{result}}</div>
@@ -36,6 +36,7 @@
             this.value = '';
           }
           this.value = '';
+          this.$refs.answer.focus();
         }
       }
     })
