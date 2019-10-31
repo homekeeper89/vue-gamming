@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0 user-scalable=no maximum-scale=1.0 minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>구구단</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div> {{firstNum}} muliply {{secondNum}} </div>
+      <form v-on:submit="onSubmit">
+        <input type="number" v-model="inputVal"></input>
+      </form>
+      <div>{{result}}</div>
+    </div>
+  </body>
+  <script>
+    const wrapper = new Vue({
+      el:'#root',
+      data:{
+        firstNum:Math.ceil(Math.random() * 9),
+        secondNum:Math.ceil(Math.random() * 9),
+        inputVal:'',
+        result:'Fail'
+      },
+      methods:{
+        onSubmit(e){
+          e.preventDefault()
+          this.result ='fail'
+          if(this.firstNum * this.secondNum === parseInt(this.inputVal)){
+            this.result ='success'
+            this.firstNum = Math.ceil(Math.random() * 9)
+            this.secondNum = Math.ceil(Math.random() * 9)
+          }
+        }
+      }
+    })
+  </script>
+</html>
