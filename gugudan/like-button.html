@@ -8,8 +8,9 @@
   </head>
   <body>
     <div id="root">
-      <div v-if="liked">clicked Like</div>
-      <div v-else-if="liked">clicked else Like</div>
+      <div v-if="route==='main'">main</div>
+      <div v-else-if="route==='sub1'">sub</div>
+      <div v-else-if="route==='sub2'">sub2</div>
       <button v-else v-on:click="onClickButton">Like</button>
     </div>
   </body>
@@ -17,7 +18,8 @@
     const app = new Vue({
       el:"#root",
       data:{
-        liked:false
+        liked:false,
+        route:'main'
       },
       methods:{
         onClickButton(){
