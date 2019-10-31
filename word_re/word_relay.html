@@ -8,9 +8,9 @@
   </head>
   <body>
     <div id="root"> 
-        <word-relay></word-relay>
-        <word-relay></word-relay>
-        <word-relay></word-relay>
+        <word-relay start-word='김장훈'></word-relay>
+        <word-relay start-word='훈장김'></word-relay>
+        <word-relay start-word='김앤장'></word-relay>
     </div>
   </body>
   <script>
@@ -26,9 +26,10 @@
           <div>{{result}}</div>
         </div>
       `,
+      props:['start-word'],
       data(){
         return{
-          word:'김장훈',
+          word:this.startWord,
           value:'',
           result:'',
         } // component에선 data를 함수형태로 만들어야함
