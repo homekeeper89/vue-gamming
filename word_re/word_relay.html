@@ -8,23 +8,30 @@
   </head>
   <body>
     <div id="root"> 
-      <div>
-        <div>{{word}}</div>
-        <form v-on:submit="onSubmit">
-          <input type="text" v-model="value">
-          <button type="submit">입력!</button>
-        </form>
-      </div>
-      <div>{{result}}</div>
+        <word-relay></word-relay>
+        <word-relay></word-relay>
+        <word-relay></word-relay>
     </div>
   </body>
   <script>
-    const app = new Vue({
-      el:'#root',
-      data:{
-        word:'김장훈',
-        value:'',
-        result:'',
+    Vue.component('word-relay',{
+      // component도 최상위 태그가 있어야한다, root 같은
+      template:`
+        <div>
+          <div>{{word}}</div>
+            <form v-on:submit="onSubmit">
+              <input type="text" v-model="value">
+              <button type="submit">입력!</button>
+            </form>
+          <div>{{result}}</div>
+        </div>
+      `,
+      data(){
+        return{
+          word:'김장훈',
+          value:'',
+          result:'',
+        } // component에선 data를 함수형태로 만들어야함
       },
       methods:{
         onSubmit(e){
@@ -36,6 +43,11 @@
           }
         }
       }
+    })
+  </script>
+  <script>
+    const app = new Vue({
+      el:'#root'
     })
   </script>
 </html>
