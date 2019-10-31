@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0 user-scalable=no maximum-scale=1.0 minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>relay</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root"> 
+      <div>
+        <div>{{word}}</div>
+        <form v-on:submit="onSubmit">
+          <input type="text" v-model="value">
+          <button type="submit">입력!</button>
+        </form>
+      </div>
+      <div>{{result}}</div>
+    </div>
+  </body>
+  <script>
+    const app = new Vue({
+      el:'#root',
+      data:{
+        word:'김장훈',
+        value:'',
+        result:'',
+      },
+      methods:{
+        onSubmit(e){
+          e.preventDefault();
+          this.result = '땡'
+          if(this.word[this.word.length-1] === this.value[0]){
+            this.result = '딩동댕'
+            this.word = this.value
+          }
+        }
+      }
+    })
+  </script>
+</html>
