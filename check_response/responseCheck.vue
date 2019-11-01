@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="screen" :class='state'>{{message}}</div>
+    <div id="screen" :class='state' @click="onClickScreen">{{message}}</div>
     <div>
       <div>평균 시간:{{}}</div>
       <button @click="onReset">리셋</button>
@@ -19,6 +19,15 @@
     methods:{
       onReset(){
         
+      },
+      onClickScreen(){
+        if(this.state ==='waiting'){
+          this.state = 'ready';
+        }else if(this.state === 'ready'){
+          this.state = 'now'
+        }else if(this.state === 'now'){
+          this.state = 'waiting'
+        }
       }
     }
   }
