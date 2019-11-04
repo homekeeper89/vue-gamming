@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div id="computer" :style="{backrgound:'url(https://en.pimg.jp/023/182/267/1/23182267.jpg) 0 0'}"></div>
+    <div id="computer" :style="{background:`url(https://en.pimg.jp/023/182/267/1/23182267.jpg) 0 0`}"></div>
     <div>
-      <button>바위</button>
-      <button>가위</button>
-      <button>보</button>
+      <button @click="onClickButton('바위')">바위</button>
+      <button @click="onClickButton('가위')">가위</button>
+      <button @click="onClickButton('보')">보</button>
     </div>
     <div>{{result}}</div>
     <div>현재 {{score}} 점</div>
@@ -22,7 +22,9 @@
       
     },
     methods:{
-      
+      onClickButton(choice){
+
+      }
     }
   }
 </script>
@@ -30,5 +32,6 @@
   #computer{
     width:142px;
     height:200px;
+    background-position:0 0;
   }
 </style>
