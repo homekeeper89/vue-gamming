@@ -2,7 +2,7 @@
   <div>
     <div id="screen" :class='state' @click="onClickScreen">{{message}}</div>
     <div>
-      <div>평균 시간:{{result.reduce((a,c) => a+c, 0) / result.length || 0}}ms</div>
+      <div>평균 시간:{{average}}ms</div>
       <button @click="onReset">리셋</button>
     </div>
   </div>
@@ -17,6 +17,12 @@
         result:[],
         state:'waiting',
         message:'클릭해서 시작하세요'
+      }
+    },
+    computed:{ // 일반 data를 가공해서 쓸때 computed를 사용한다
+      average(){
+        // 아래 값이 캐싱된 상태, result가 바뀌었을때만 계산된다. 다른 data가 바뀌었을땐 이상없고
+        return this.result.reduce((a,c) => a+c, 0) / this.result.length || 0
       }
     },
     methods:{
