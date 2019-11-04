@@ -72,7 +72,6 @@
       })
     },
     created(){
-      console.log("kk")
     }
   }
 </script>
