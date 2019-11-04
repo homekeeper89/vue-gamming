@@ -70,6 +70,9 @@
       timeOuts.forEach((t)=>{
         clearTimeout(t)
       })
+    },
+    created(){
+      
     }
   }
 </script>
