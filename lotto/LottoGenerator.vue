@@ -43,7 +43,6 @@
         this.winBalls = [];
         this.bonus = null;
         this.redo = false;
-        this.showBalls()
       },
       showBalls(){
         for(let i =0; i<this.winNumbers.length-1; i++){
@@ -60,8 +59,12 @@
     mounted(){
       this.showBalls()
     },
-    watch:{
-
+    watch:{ // 어떤 값이 바뀌었는지 아닌지 지켜보는 것. 여기는 데이터를 명시해줘야함
+      winBalls(value, oldValue){ // watch를 자주 쓰지말자.. 객체를 여기에 넣으면 참조관계때매 정확히 값이 안나올수도
+        if(value.length===0){
+          this.showBalls()
+        }
+      }
     },
     beforeDestroy(){
       timeOuts.forEach((t)=>{
