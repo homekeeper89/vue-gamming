@@ -1,12 +1,34 @@
 <template>
   <div>
     <div>{{turn}}님의 턴 입니다</div>
-    <!-- <table-component :table-data="tableData"></table-component> 렌더가 너무 많이되서  -->
-    <table>
+    <!-- <table-component :table-data="tableData"></table-component> -->
+    <!-- 슬롯을 왜쓰는가? 아래 tag는 해당 컴포넌트의 slot에 있는것과 마찬가지
+      하지만 작성한 곳은 root이다. 이럴 경우 root data에 바로 접근이 가능 > 아래 컴포넌트 데이터에 접근할 필요없이
+      자식 컴포넌트 내용을 부모에 적어줌으로서 부모 데이터에 접근할 수 있다. 
+      inversion of control
+        > tr,td 컨트롤이 table-componet 였는데 반대로 지금은 부모에게서 하고 있다
+        > 제어의 역전
+    -->
+    <table-component> <!--slot 사용법: 컴포넌트 사이에 태그를 넣어준다 -->
+      <!-- 반복문에서 key를 인덱스로 사용하면 안좋다
+        써도 되는 경우 : 배열이 계속 증가 하는 경우(인덱스는 바뀌지 않는다)
+        [0,1,2,3,4,5] index : 0,1,2,3,4,5
+        만약 중간에 있는 애들이 지워진다면?
+          [0,1,2,4,5] index : 0,1,2,3,4,5
+        > 지워진 애 뒤로 전부 다 그려버린다.
+        리스트 요소가 사라진다면 쓰면 좀 그렇다..
+        rowIndex + '문자'... 좀 애매한 문제임
+        Math.random
+      -->
       <tr v-for="(rowData, rowIndex) in tableData" :key="rowIndex">
         <td @click="onClickTd(rowIndex, cellIndex)" v-for="(cellData, cellIndex) in rowData" :key="cellIndex">{{cellData}}</td>
       </tr>
-    </table>
+    </table-component>
+    <!-- <table>
+      <tr v-for="(rowData, rowIndex) in tableData" :key="rowIndex">
+        <td @click="onClickTd(rowIndex, cellIndex)" v-for="(cellData, cellIndex) in rowData" :key="cellIndex">{{cellData}}</td>
+      </tr>
+    </table> -->
     <div v-if='winner'> {{winner}}님의 승리입니다. </div>
   </div>
 </template>
