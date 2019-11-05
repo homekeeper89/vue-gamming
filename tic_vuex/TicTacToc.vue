@@ -6,6 +6,7 @@
 </template>
 <script>
   import Vue from 'vue'
+  import {mapState} from 'vuex';
   import store from './store'
   import TableComponent from './TableComponent'
   export default{
@@ -19,15 +20,23 @@
       }
     },
     computed:{
-      winner(){
-        return this.$store.state.winner
-      },
-      turn(){
-        return this.$store.state.turn
-      },
-      tableData(){
-        return this.$store.state.tableData
-      }
+      ...mapState(['winner', 'turn', 'tableData']),
+      // ...mapState({
+      //   winner: state => state.winner,
+      //   winner(state){ // arrow 함수는 this를 사용 못한다. 공식문서 참조하셈
+      //     return state.winner + this.data
+      //   },
+      //   turnState:'turn'
+      // })
+      // winner(){
+      //   return this.$store.state.winner
+      // },
+      // turn(){
+      //   return this.$store.state.turn
+      // },
+      // tableData(){
+      //   return this.$store.state.tableData
+      // }
     },
     methods:{
       
