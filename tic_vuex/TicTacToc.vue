@@ -15,13 +15,18 @@
     },
     data(){
       return{
-        tableData:[
-      ['','',''],
-      ['','',''],
-      ['','',''],
-    ],
-    turn:'O',
-    winner:false
+        
+      }
+    },
+    computed:{
+      winner(){
+        return this.$store.state.winner
+      },
+      turn(){
+        return this.$store.state.turn
+      },
+      tableData(){
+        return this.$store.state.tableData
       }
     },
     methods:{
