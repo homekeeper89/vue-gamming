@@ -1,10 +1,11 @@
 <template>
   <div>
     <table-component :table-data="tableData"></table-component>
-    <div> {{turn}} 입니다 </div>
+    <div v-if='winner'> {{winner}}님의 승리입니다. </div>
   </div>
 </template>
 <script>
+  import Vue from 'vue'
   import TableComponent from './TableComponent'
   export default{
     components:{
@@ -18,6 +19,7 @@
           ['','',''],
         ],
         turn:'O',
+        winner:false
       }
     },
     methods:{
