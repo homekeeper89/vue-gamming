@@ -1,6 +1,6 @@
 import Vuex from 'vuex'
 import Vue from 'vue';
-
+// pin확인
 Vue.use(Vuex)//1. 반드시 연결 this.$store가 가능함
 // Vue.use(axios) > this.$axios, 일종의 미들웨어 개념
 // main.js 에서 연결할 경우 로테이션 에러가 발생함.
