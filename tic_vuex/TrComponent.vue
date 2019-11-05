@@ -10,8 +10,12 @@ export default {
     TdComponent
   },
   props:{
-    rowData:Array,
     rowIndex:Number
+  },
+  computed:{
+    rowData(){
+      return this.$store.state.tableData[this.rowIndex]
+    }
   },
   data(){
     return{
