@@ -6,61 +6,26 @@
 </template>
 <script>
   import Vue from 'vue'
+  import store from './store'
   import TableComponent from './TableComponent'
   export default{
+    store,
     components:{
       TableComponent
     },
     data(){
       return{
         tableData:[
-          ['','',''],
-          ['','',''],
-          ['','',''],
-        ],
-        turn:'O',
-        winner:false
+      ['','',''],
+      ['','',''],
+      ['','',''],
+    ],
+    turn:'O',
+    winner:false
       }
     },
     methods:{
-      onClickTd(rowIndex, cellIndex){ // vue에서 리스트의 내부 값을 바꾼다고 화면에 반영되는 것은 아니다.
-      console.log(rowIndex, cellIndex)
-      this.$set(this.tableData[rowIndex], cellIndex, this.turn)
-      let win = false;
-      if (this.tableData[rowIndex][0] === this.turn && this.tableData[rowIndex][1] === this.turn && this.tableData[rowIndex][2] === this.turn) {
-        win = true;
-      }
-      if (this.tableData[0][cellIndex] === this.turn && this.tableData[1][cellIndex] === this.turn && this.tableData[2][cellIndex] === this.turn) {
-        win = true;
-      }
-      if (this.tableData[0][0] === this.turn && this.tableData[1][1] === this.turn && this.tableData[2][2] === this.turn) {
-        win = true;
-      }
-      if (this.tableData[0][2] === this.turn && this.tableData[1][1] === this.turn && this.tableData[2][0] === this.turn) {
-        win = true;
-      }
-      if(win){
-        this.winner = this.turn;
-        this.turn = 'O'
-        this.tableData = [['','',''],['','',''], ['','','']]
-      }else{
-        let all = true; // all이 true면 무승부라는 뜻
-        this.tableData.forEach((row) => { // 무승부 검사
-          row.forEach((cell) => {
-            if (!cell) {
-              all = false;
-            }
-          })
-          });
-        if(all){
-          this.winner='';
-          this.turn = 'O'
-          this.tableData = [['','',''],['','',''], ['','','']]
-        }else{
-          this.turn = this.turn ==='O' ? 'X' : 'O' 
-        }
-      }
-    }
+      
     },
     created(){
     }
