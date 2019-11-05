@@ -1,11 +1,13 @@
 import Vuex from 'vuex'
-
+import Vue from 'vue';
 export const SET_WINNER = 'SET_WINNER'
 export const CLICK_CELL = 'CLICK_CELL'
 export const CHANGE_TURN = 'CHANGE_TURN'
 export const RESET_GAME = 'RESET_GAME'
 export const NO_WINNER = 'NO_WINNER'
-
+// export와 export default의 차이
+// export 한 애들 : import {SET_WINNER} from  > 중괄호를 묶어줘야한다.
+// export default : import Vuex from
 export default new Vuex.Store({
   state:{
     tableData:[
@@ -22,7 +24,8 @@ export default new Vuex.Store({
       state.winner = winner;
     },
     [CLICK_CELL](state, {row, cell}){
-      state.tableData[row][cell] = state.turn
+      Vue.set(state.tableData[row], cell,state.turn)
+      // 배열 수정시 Vue.set 또는 this.$set
     },
     [CHANGE_TURN](state){
       state.turn = state.turn ==='O' ? 'X':'O'
