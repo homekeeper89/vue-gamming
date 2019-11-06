@@ -4,7 +4,6 @@ import Vue from 'vue';
 Vue.use(Vuex)//1. 반드시 연결 this.$store가 가능함
 // Vue.use(axios) > this.$axios, 일종의 미들웨어 개념
 // main.js 에서 연결할 경우 로테이션 에러가 발생함.
-
 export const SET_WINNER = 'SET_WINNER'
 export const CLICK_CELL = 'CLICK_CELL'
 export const CHANGE_TURN = 'CHANGE_TURN'
